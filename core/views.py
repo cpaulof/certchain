@@ -43,8 +43,6 @@ def create_block(request):
     return JsonResponse(response)
     
     
-
-
 #@login_required(redirect_field_name="", login_url="/login/")
 def get_chain(request):
     response = {
@@ -58,4 +56,10 @@ def get_chain(request):
         response['user'] = user.username
         response['chain'] =  objs
 
+    return JsonResponse(response)
+
+def verify(request):
+    response = {}
+    if request.user.is_authenticated:
+        response['verified'] = Block.verify()
     return JsonResponse(response)

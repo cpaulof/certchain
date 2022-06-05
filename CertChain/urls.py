@@ -23,5 +23,6 @@ urlpatterns = [
     path('chain/', core.get_chain),
     path('login/', core.do_login),
     path('logout/', core.do_logout),
-    path('create/', core.create_block)
+    path('create/', core.create_block),
+    path('verify/', core.verify)
 ]
