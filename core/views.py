@@ -6,6 +6,7 @@ from .models import Block
 
 
 def do_login(request):
+    print(request.headers)
     query = request.GET
     username = query['username']
     password = query['password']
@@ -18,6 +19,7 @@ def do_login(request):
     return JsonResponse(response)
 
 def do_logout(request):
+    print(request.headers)
     response = {'logout':'success'}
     logout(request)
     return JsonResponse(response)
@@ -45,6 +47,7 @@ def create_block(request):
     
 #@login_required(redirect_field_name="", login_url="/login/")
 def get_chain(request):
+    print(request.headers)
     response = {
         'user': None,
         'chain': None

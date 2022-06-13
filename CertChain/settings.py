@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ax&(nb#a4_0*sl987c5em%m%%c&dzneekkvx8r!727antyhbno
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', '192.168.3.2', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -37,18 +37,46 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core'
+    'core',
+    'corsheaders',
+    'rest_framework',
+    
 ]
+
+AUTH_USER_MODEL = 'core.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_HEADERS = ["Accept", "Accept-Language", "Authorization", "Content-Type"]
+
+CORS_ALLOW_METHODS = ["GET", "POST", "PUT"]
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3030',
+# ] # If this is used, then not need to use `CORS_ALLOW_ALL_ORIGINS = True`
+# CORS_ALLOWED_ORIGIN_REGEXES = [
+#     'http://localhost:3030',
+# ]
+
 
 ROOT_URLCONF = 'CertChain.urls'
 
