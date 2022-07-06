@@ -1,5 +1,5 @@
 from rest_framework.routers import SimpleRouter
-from core.viewsets import UserViewSet, BlockViewSet
+from core.viewsets import UserViewSet, BlockViewSet, DocumentViewSet
 from auth.viewsets import LoginViewSet, RegistrationViewSet, RefreshViewSet
 
 
@@ -15,7 +15,7 @@ routes.register(r'user', UserViewSet, basename='user')
 
 #BLOCK
 routes.register(r'block', BlockViewSet, basename='block')
-
+routes.register(r'doc', DocumentViewSet, basename='document')
 
 urlpatterns = [
     *routes.urls

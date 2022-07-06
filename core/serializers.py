@@ -1,4 +1,4 @@
-from core.models import User, Block
+from core.models import User, Block, Document
 from rest_framework import serializers
 
 
@@ -12,7 +12,10 @@ class BlockSerializer(serializers.ModelSerializer):
         model = Block
         fields = ['previous_hash', 'user', 'date', 'block_type', 'data']
     
-
+class DocSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Document
+        fields = ['user', 'hash', 'uploaded_at','file']
     
 
         

@@ -59,7 +59,7 @@ class Block(models.Model):
     block_type = models.IntegerField()
     date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True)
-    data = models.TextField()
+    data = models.TextField(null=True)
 
     def get_previous_hash(self):
         prev = ''
@@ -119,6 +119,7 @@ class Document(models.Model):
     file = models.FileField(upload_to='documents/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    hash = models.CharField(max_length=64, primary_key=True)
 
 
 
